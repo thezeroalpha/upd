@@ -1,0 +1,19 @@
+.TH UPD 1 "13 March 2021"
+.SH NAME
+upd - update all of your package systems on macOS at once.
+
+.SH SYNOPSIS
+\fBupd\fP [ -h | -n ]
+\fIcommand\fP
+
+.SH DESCRIPTION
+\fBupd\fP updates all of you package systems on macOS at once, unattended.
+
+.SS Options
+.TP
+\fB-h, --help\fP
+Get help.
+
+.TP
+\fB-n, --dry-run\fP
+Don't upgrade anything, only update & cleanup.
