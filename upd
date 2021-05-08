@@ -73,7 +73,8 @@ class Homebrew
 
     puts "Homebrew cache disk usage: #{`du -skh "$(brew --cache)" | cut -f1`}"
     puts "Remove with:\trm -rf $(brew --cache)"
-    system 'brew bundle dump --force --file=~/.dotfiles/Brewfile;'
+    brewfile = (ENV['DOTFILES'].nil? ? "#{ENV['HOME']}/Brewfile" : "#{ENV['DOTFILES']}/Brewfile")
+    system "brew bundle dump --force --file=#{brewfile};"
   end
 end
 
