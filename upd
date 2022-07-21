@@ -124,6 +124,53 @@ class NPM
   end
 end
 
+# Rust
+class Rustup
+  def initialize
+    check_deps ['rustup']
+    puts '-- Rustup --'
+  end
+
+  def do_upgrade
+    system 'rustup self update'
+    system 'rustup update'
+  end
+end
+
+class Cargo
+  def initialize
+    check_deps ['cargo-install-update']
+    puts '-- Cargo --'
+  end
+  def do_upgrade
+    system 'cargo-install-update install-update --git --all'
+  end
+end
+
+# Haskell stack
+class Stack
+  def initialize
+    check_deps ['stack']
+    puts '-- Stack --'
+  end
+
+  def do_upgrade
+    system 'stack upgrade'
+  end
+end
+
+# Texlive
+class Tlmgr
+  def initialize
+    check_deps ['tlmgr']
+    puts '-- Tlmgr --'
+  end
+
+  def do_upgrade
+    system 'sudo tlmgr update --self --all'
+  end
+end
+
 def do_prompts(systems)
   system_instances = systems.map(&:new)
   system_instances.each(&:prompt_user) if (['-n', '--dry-run'] & ARGV).empty?
@@ -142,7 +189,7 @@ def upgrade_cleanup(system_instance)
 end
 
 def main
-  package_systems = [Homebrew, Pipx, RubyGems, NPM]
+  package_systems = [Homebrew, Cargo, NPM, Pipx, RubyGems, Rustup, Stack, Tlmgr]
 
   split_systems = split_systems_by_prompting package_systems
 
