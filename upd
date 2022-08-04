@@ -189,7 +189,7 @@ def upgrade_cleanup(system_instance)
 end
 
 def main
-  package_systems = [Homebrew, Cargo, NPM, Pipx, RubyGems, Rustup, Stack, Tlmgr]
+  package_systems = [Homebrew, Cargo, NPM, Pipx, RubyGems, Rustup, Stack]#, Tlmgr] # TODO: tlmgr needs sudo
 
   split_systems = split_systems_by_prompting package_systems
 
